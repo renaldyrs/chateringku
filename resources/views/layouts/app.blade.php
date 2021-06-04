@@ -15,9 +15,18 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}">
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('assets/css/main.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/until.css')}}">
+    <!-- vendor -->
+    <link rel="stylesheet" href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendor/animate/animate.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendor/css-hamburgers/hamburgers.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/vendor/select2/select2.min.css')}}">
+
+    
 </head>
 <body>
     <div id="app">
