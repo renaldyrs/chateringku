@@ -9,33 +9,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>E-Cateringku</title>
 
-      <!-- Google Font -->
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet">
-
-  
+    
+  <!-- Font Awesome JS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
     
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="{{asset('assets/css/smoothproducts.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/sidebar.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}"> 
+
     <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
 
 
     <link rel="stylesheet" href="{{asset('assets/css/style_pengadaan.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/style4_admin.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/flaticon.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/barfiller.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/magnific-popup.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('assets/fonts/simple-line-icons.min.css')}}">
 
     
 
