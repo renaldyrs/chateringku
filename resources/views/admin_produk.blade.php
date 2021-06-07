@@ -6,7 +6,7 @@
        @include('layouts.partial.sidebar')
        
        <!-- Content here -->
-       <h2>Daftar Pegawai</h2>
+       <h2>Daftar Menu/Produk</h2>
        <br>
        <div class="container-fluid">
             
@@ -18,18 +18,18 @@
             colom search
             </div>
             <div class="col col-lg-2">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add_pegawai"><i class="fas fa-user-plus"></i>  Add Pegawai</button>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add_pegawai"><i class='fas fa-plus'></i></i>  Add Menu</button>
             </div>
         </div>
         </div>
         
-        <!-- modal add_pegawai begin -->
+        <!-- modal add_produk begin -->
         <form action="">
         <div class="modal fade" id="add_pegawai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-plus"></i>  Tambah Karyawan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-plus'></i>  Tambah Menu/Produk</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -37,42 +37,30 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-3">Nama Lengkap</div>
-                            <div class="col-md-9">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
+                            <div class="col-3">Foto Profil</div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="foto">Masukkan Foto</label>
+                                        <input type="file" class="form-control-file" id="foto">
                                     </div>
                                 </div>
-                            </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">Email</div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="Email">
-                            </div>
+                            <div class="col-3">Nama Menu</div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">Alamat</div>
+                            <div class="col-3">Deskripsi</div>
                             <div class="col-md-9">
                                 <textarea class="form-control" rows="5" id="comment"></textarea>
                             </div>
                         </div>
                         <br>
-                        <div class="row">
-                            <div class="col-3">Foto Profil</div>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <label for="foto">Masukkan Foto</label>
-                                    <input type="file" class="form-control-file" id="foto">
-                                </div>
-                            </div>
-                        </div>
+                        
                     
                     </div>
                 </div>
@@ -148,62 +136,54 @@
         </form>
         <!-- modal ubah end -->
         <br><br>
-        <!-- profil begin -->
+        <!-- tabel begin -->
         <div class="container-fluid">
         <div class="card">
         <div class="card-body">
-            <div class="row">
-                <div class="col">
-                    <div class="card">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Nama</h5>
-                            <p class="card-text">Keterangan pegawai</p>
-                        </div>
-                        <div class="card-footer">
-                            <small><center>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class="fas fa-user-edit"></i>  Ubah</button>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col"><center>No.</center></th>
+                    <th scope="col"><center>Gambar Menu</center></th>
+                    <th scope="col"><center>Nama Menu</center></th>
+                    <th scope="col"><center>Deskripsi</center></th>
+                    <th scope="col"><center>Action</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
                             <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
-                            </center></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Nama</h5>
-                            <p class="card-text">Keterangan pegawai</p>
-                        </div>
-                        <div class="card-footer">
-                            <small><center>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class="fas fa-user-edit"></i>  Ubah</button>
+                        </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">2</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
                             <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
-                            </center></small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                    <img class="card-img-top" src="..." alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title">Nama</h5>
-                            <p class="card-text">Keterangan pegawai</p>
-                        </div>
-                        <div class="card-footer">
-                            <small><center>
-                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class="fas fa-user-edit"></i>  Ubah</button>
+                        </td>
+                    </tr>
+                    <tr>
+                    <th scope="row">3</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
                             <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
-                            </center></small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br><br>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         </div>
         </div>
-        <!-- profil end -->
+        <!-- tabel end -->
 
 
 @endsection
