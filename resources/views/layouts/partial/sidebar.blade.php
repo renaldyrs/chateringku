@@ -28,6 +28,11 @@
                     </ul>
                 </li>
                 <li>
+                    <a href="admin_pegawai.php">
+                    <i class="fas fa-users"></i>
+                        Pegawai
+                    </a>
+                <li>
                     <a href="#">
                         <i class="fas fa-hand-holding-usd"></i>
                         Keuangan
