@@ -49,7 +49,7 @@ class LoginController extends Controller
             return redirect()->intended('/admin_pengadaan');
         }
 
-        return redirect()->intended('h/');
+        return redirect()->intended('/');
     }
     public function login(Request $request){
         $data = User::where('email','=',$request->email)->first();

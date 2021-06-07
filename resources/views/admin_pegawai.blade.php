@@ -24,7 +24,8 @@
         </div>
         
         <!-- modal add_pegawai begin -->
-        <form action="">
+        <form action="/admin_pegawai/tambah" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <div class="modal fade" id="add_pegawai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -41,26 +42,26 @@
                             <div class="col-md-9">
                                 <div class="row">
                                     <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
+                                        <input type="text" class="form-control" placeholder="Nama Depan" name="depan"> 
                                     </div>
                                     <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
+                                        <input type="text" class="form-control" placeholder="Nama Depan" name="belakang">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">Email</div>
+                            <div class="col-3">No HP</div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="Email">
+                                <input type="text" class="form-control" placeholder="No Hp" name="no_hp">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-3">Alamat</div>
                             <div class="col-md-9">
-                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                                <textarea class="form-control" rows="5" id="comment" name="alamat"></textarea>
                             </div>
                         </div>
                         <br>
@@ -69,7 +70,7 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <label for="foto">Masukkan Foto</label>
-                                    <input type="file" class="form-control-file" id="foto">
+                                    <input type="file" class="form-control-file" id="foto" name="file">
                                 </div>
                             </div>
                         </div>
@@ -77,8 +78,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>  Batal</button>
-                    <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <button  class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>  Batal</button>
+                    <button  class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                 </div>
             </div>
             </div>
@@ -151,45 +152,25 @@
         <!-- profil begin -->
         <div class="container-fluid">
             <div class="card-deck">
+            @if($pegawai)
+                @foreach($pegawai as $p)
                 <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
+                    <img class="card-img-top" src="..." alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">Nama</h5>
-                        <p class="card-text">Keterangan pegawai</p>
+                        <h5 class="card-title">{{$p['nama_pegawai']}}</h5>
+                        <p class="card-text">{{$p['bagian']}}</p>
+                        <p class="card-text">{{$p['no_hp']}}</p>
+                        <p class="card-text">{{$p['alamat']}}</p>
                     </div>
                     <div class="card-footer">
                         <small><center>
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class="fas fa-user-edit"></i>  Ubah</button>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
+                        <a  class="btn btn-warning" href="/admin_pegawai/hapus/{{$p->id_pegawai}}"><i class="fas fa-times"></i> Hapus</a>
                         </center></small>
                     </div>
                 </div>
-                <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Nama</h5>
-                        <p class="card-text">Keterangan pegawai</p>
-                    </div>
-                    <div class="card-footer">
-                        <small><center>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class="fas fa-user-edit"></i>  Ubah</button>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
-                        </center></small>
-                    </div>
-                </div>
-                <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Nama</h5>
-                        <p class="card-text">Keterangan pegawai</p>
-                    </div>
-                    <div class="card-footer">
-                        <small><center>
-                        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class="fas fa-user-edit"></i>  Ubah</button>
-                        <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
-                        </center></small>
-                    </div>
-                </div>
+                @endforeach
+            @endif
             </div>
         </div>
         <!-- profil end -->
