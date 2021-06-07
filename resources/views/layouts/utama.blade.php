@@ -35,6 +35,10 @@
     <link rel="stylesheet" href="{{asset('assets/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('assets/css/style.css')}}" type="text/css">
 
+    <link rel="stylesheet" href="{{asset('assets/css/style_pengadaan.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('assets/css/style4_admin.css')}}" type="text/css">
+
+
     @stack('style')
 
 
