@@ -10,6 +10,13 @@
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
+                </li>
+                <li>
+                    <a href="admin_produk.php">
+                    <i class='fas fa-boxes'></i>  
+                        Menu / Produk
+                    </a>
+                </li>
                 <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-inbox"></i>
