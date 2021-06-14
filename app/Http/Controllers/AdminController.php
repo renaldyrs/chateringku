@@ -11,6 +11,9 @@ class AdminController extends Controller
     public function index(){
         return view('/adminhome');
     }
+    public function produk(){
+        return view('/admin_produk');
+    }
     public function pegawai(){
         $pegawai = pegawai::get();
         return view('admin_pegawai',['pegawai'=>$pegawai]);
