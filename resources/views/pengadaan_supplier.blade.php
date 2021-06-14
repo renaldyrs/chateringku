@@ -3,10 +3,10 @@
 
 <div class="wrapper">
         <!-- Sidebar  -->
-       @include('layouts.partial.sidebar')
+       @include('layouts.partial.sidebar2')
        
        <!-- Content here -->
-       <h2>Daftar Menu/Produk</h2>
+       <h2>Daftar Supplier</h2>
        <br>
        <div class="container-fluid">
             
@@ -18,7 +18,7 @@
             colom search
             </div>
             <div class="col col-lg-2">
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#add_pegawai"><i class='fas fa-plus'></i></i>  Add Menu</button>
+                <button type="button" class="btn btn-success btn-lg active" data-toggle="modal" data-target="#add_pegawai"><i class='fas fa-plus'></i></i>  Add Supplier</button>
             </div>
         </div>
         </div>
@@ -29,7 +29,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-plus'></i>  Tambah Menu/Produk</h5>
+                    <h5 class="modal-title" id="exampleModalLabel"><i class='fas fa-plus'></i>  Tambah Supplier</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -37,27 +37,24 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-3">Foto Profil</div>
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <label for="foto">Masukkan Foto</label>
-                                        <input type="file" class="form-control-file" id="foto">
-                                    </div>
-                                </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-3">Nama Menu</div>
+                            <div class="col-3">Nama Supplier</div>
                                 <div class="col-md-9">
                                     <input type="text" class="form-control" placeholder="Email">
                                 </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">Deskripsi</div>
+                            <div class="col-3">Alamat Produk</div>
                             <div class="col-md-9">
                                 <textarea class="form-control" rows="5" id="comment"></textarea>
                             </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-3">No. Handphone</div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
                         </div>
                         <br>
                         
@@ -66,7 +63,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>  Batal</button>
-                    <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <button type="button" class="btn btn-primary "><i class="fas fa-save"></i> Simpan</button>
                 </div>
             </div>
             </div>
@@ -86,41 +83,24 @@
                 </div>
                 <div class="modal-body">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-3">Nama Lengkap</div>
-                            <div class="col-md-9">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-3">Email</div>
+                    <div class="row">
+                            <div class="col-3">Nama Supplier</div>
                             <div class="col-md-9">
                                 <input type="text" class="form-control" placeholder="Email">
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">Alamat</div>
+                            <div class="col-3">Alamat Supplier</div>
                             <div class="col-md-9">
                                 <textarea class="form-control" rows="5" id="comment"></textarea>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-3">Foto Profil</div>
+                            <div class="col-3">No. Handphone</div>
                             <div class="col-md-9">
-                                <div class="form-group">
-                                    <label for="foto">Masukkan Foto</label>
-                                    <input type="file" class="form-control-file" id="foto">
-                                </div>
+                                <input type="text" class="form-control" placeholder="Email">
                             </div>
                         </div>
                     
@@ -144,20 +124,36 @@
                 <thead class="thead-dark">
                     <tr>
                     <th scope="col"><center>No.</center></th>
-                    <th scope="col"><center>Nama Menu</center></th>
-                    <th scope="col"><center>Harga /porsi</center></th>
-                    <th scope="col"><center>Gambar Menu</center></th>
-                    <th scope="col"><center>Kategori Menu</center></th>
+                    <th scope="col"><center>Nama Supplier</center></th>
+                    <th scope="col"><center>Alamat Supplier</center></th>
+                    <th scope="col"><center>No.HP Supplier</center></th>
                     <th scope="col"><center>Action</center></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                     <th scope="row">1</th>
-                        <td>Rawon</td>
-                        <td>Rp 7.000</td>
-                        <td></td>
-                        <td>makanan berat</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td><center><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
+                            <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
+                        </center></td>
+                    </tr>
+                    <tr>
+                    <th scope="row">2</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        <td><center><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
+                            <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
+                        </center></td>
+                    </tr>
+                    <tr>
+                    <th scope="row">3</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
                         <td><center><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
                             <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
                         </center></td>

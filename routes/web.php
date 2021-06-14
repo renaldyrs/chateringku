@@ -30,3 +30,6 @@ Route::get('/admin_pegawai', function () {
 Route::get('/admin_produk', function () {
     return view('admin_produk');
 });
+Route::get('/pengadaan_supplier', function () {
+    return view('pengadaan_supplier');
+});
