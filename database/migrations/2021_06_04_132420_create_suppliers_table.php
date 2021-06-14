@@ -17,7 +17,7 @@ class CreateSuppliersTable extends Migration
             $table->increments('id_suplier');
             $table->string('nama_suplier');
             $table->string('alamat');
-            $table->string('no');
+            $table->string('no_hp');
         });
     }
 
