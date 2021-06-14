@@ -6,7 +6,7 @@
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#">
+                    <a href="/adminhome">
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
