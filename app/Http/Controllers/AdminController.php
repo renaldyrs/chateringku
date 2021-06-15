@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Pegawai;
+use App\Models\produk;
 use File;
 use DB;
 class AdminController extends Controller
@@ -12,8 +13,58 @@ class AdminController extends Controller
         return view('/adminhome');
     }
     public function produk(){
-        return view('/admin_produk');
+        $produk = produk::get();
+        return view('/admin_produk',['produk'=>$produk]);
     }
+
+    public function tambahproduk(Request $request){
+        $file = $request->file('file');
+        // dd($file);
+        $nama_file = $request->nama.".".$file->getClientOriginalExtension();
+        $tujuan_upload = 'data_file/produk';
+        $file->move($tujuan_upload,$nama_file);
+        produk::insert([
+            'nama_produk'=>$request->nama,
+            'harga'=>$request->harga,
+            'file'=>$nama_file,
+            'deskripsi'=>$request->deskripsi,
+            'kategori'=>$request->kategori,
+        ]);
+        return redirect()->back();
+    }
+    public function hapusproduk($id){
+
+        $produk = produk::find($id);
+        File::delete('data_file/produk/'.$produk->foto);
+        $produk->delete();
+        return redirect()->back();
+        // $pegawai = pegawai::where('id_pegawai' ,$id )->get();
+        // dd($pegawai);
+    }
+    public function editproduk(Request $request){
+
+        $produk = produk::find($request->id);
+        File::delete('data_file/produk/'.$produk->foto);
+
+
+        $file = $request->file('file');
+        // dd($file);
+        $nama_file = $request->nama.".".$file->getClientOriginalExtension();
+        $tujuan_upload = 'data_file/produk';
+        $file->move($tujuan_upload,$nama_file);
+        DB::table('produks')->where('id_produk', $request->id)->update([
+            'nama_produk'=>$request->nama,
+            'harga'=>$request->harga,
+            'file'=>$nama_file,
+            'deskripsi'=>$request->deskripsi,
+            'kategori'=>$request->kategori,
+        ]);
+
+        return redirect()->back();
+        // $pegawai = pegawai::where('id_pegawai' ,$id )->get();
+        // dd($pegawai);
+    }      
+
     public function pegawai(){
         $pegawai = pegawai::get();
         return view('admin_pegawai',['pegawai'=>$pegawai]);
