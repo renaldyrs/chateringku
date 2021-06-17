@@ -33,3 +33,15 @@ Route::get('/admin_produk', function () {
 Route::get('/pengadaan_supplier', function () {
     return view('pengadaan_supplier');
 });
+Route::get('/keranjang', function () {
+    return view('keranjang');
+});
+Route::get('/produk-detail', function () {
+    return view('produk-detail');
+});
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+Route::get('/pembayaran', function () {
+    return view('pembayaran');
+});
