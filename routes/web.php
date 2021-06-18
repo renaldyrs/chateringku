@@ -41,3 +41,26 @@ Route::get('/pengadaan_supplier', 'App\HTTP\Controllers\PengadaanController@supl
 Route::post('/pengadaan_supplier/tambah', 'App\HTTP\Controllers\PengadaanController@tambahsuplier')->middleware(['role:pengadaan','auth']);
 Route::post('/pengadaan_supplier/edit', 'App\HTTP\Controllers\PengadaanController@editsuplier')->middleware(['role:pengadaan','auth']);
 Route::get('/pengadaan_supplier/hapus/{id}', 'App\HTTP\Controllers\PengadaanController@hapussuplier')->middleware(['role:pengadaan','auth']);
+
+
+Route::get('/admin_pegawai', function () {
+    return view('admin_pegawai');
+});
+Route::get('/admin_produk', function () {
+    return view('admin_produk');
+});
+Route::get('/pengadaan_supplier', function () {
+    return view('pengadaan_supplier');
+});
+Route::get('/keranjang', function () {
+    return view('keranjang');
+});
+Route::get('/produk-detail', function () {
+    return view('produk-detail');
+});
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+Route::get('/pembayaran', function () {
+    return view('pembayaran');
+});
