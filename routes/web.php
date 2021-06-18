@@ -13,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', "App\HTTP\Controllers\PelangganController@index");
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+
+
+
+
+
+// admin
 
 Route::get('/adminhome', 'App\HTTP\Controllers\AdminController@index')->name('adminhome')->middleware(['role:admin','auth']);
 Route::get('/admin_pegawai','App\HTTP\Controllers\AdminController@pegawai')->middleware(['role:admin','auth']);
@@ -43,15 +48,8 @@ Route::post('/pengadaan_supplier/edit', 'App\HTTP\Controllers\PengadaanControlle
 Route::get('/pengadaan_supplier/hapus/{id}', 'App\HTTP\Controllers\PengadaanController@hapussuplier')->middleware(['role:pengadaan','auth']);
 
 
-Route::get('/admin_pegawai', function () {
-    return view('admin_pegawai');
-});
-Route::get('/admin_produk', function () {
-    return view('admin_produk');
-});
-Route::get('/pengadaan_supplier', function () {
-    return view('pengadaan_supplier');
-});
+
+
 Route::get('/keranjang', function () {
     return view('keranjang');
 });
