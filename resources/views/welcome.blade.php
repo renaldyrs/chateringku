@@ -149,7 +149,12 @@
                             <h6><a href="#">{{$p->nama_produk}}</a></h6>
                             <div class="product__item__price">{{$p->harga}}</div>
                             <div class="cart_add">
-                                <a href="#">Add to cart</a>
+                                <form action="{{ route('add') }}" method="post">
+                                    @csrf
+                                    
+                                    <input type="hidden" name="product_id" value="{{ $p->id_produk }}" class="form-control">
+                                    <button class="btn btn-primary" ><i class="icon-basket"></i>Add to cart</button>
+                                </form>
                             </div>
                         </div>
                     </div>

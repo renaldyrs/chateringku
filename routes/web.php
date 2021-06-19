@@ -21,7 +21,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 
-
+// pelanggan
+Route::post('/add-to-cart', 'App\HTTP\Controllers\PelangganController@add')->name('add')->middleware(['auth']);
+Route::get('/keranjang', 'App\HTTP\Controllers\PelangganController@keranjang')->name('keranjang')->middleware(['auth']);
 
 
 // admin
@@ -48,11 +50,6 @@ Route::post('/pengadaan_supplier/edit', 'App\HTTP\Controllers\PengadaanControlle
 Route::get('/pengadaan_supplier/hapus/{id}', 'App\HTTP\Controllers\PengadaanController@hapussuplier')->middleware(['role:pengadaan','auth']);
 
 
-
-
-Route::get('/keranjang', function () {
-    return view('keranjang');
-});
 Route::get('/produk-detail', function () {
     return view('produk-detail');
 });
