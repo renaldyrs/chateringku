@@ -39,28 +39,32 @@
                                 </tr>
                             </thead>
                             <tbody>
+                        @if($cartItems)
+                            @foreach($cartItems as $c)
                                 <tr>
                                     <td class="product__cart__item">
                                         <div class="product__cart__item__pic">
                                             <img src="img/shop/cart/cart-1.jpg" alt="">
                                         </div>
                                         <div class="product__cart__item__text">
-                                            <h6>Nama Menu Makanan</h6>
-                                            <h5>(Harga)</h5>
+                                            <h6>{{$c['product_name']}}</h6>
+                                            <h5>{{$c['product_price']}}</h5>
                                         </div>
                                     </td>
                                     <td class="quantity__item">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="1">
+                                                <input type="text"  value="{{$c['qty']}}">
                                             </div>
                                         </div>
                                     </td>
                                     <td class="cart__price">$ 30.00</td>
                                     <td class="cart__close">
-                                        <button type="button" class="btn btn-outline-light"><i class="fas fa-times"></i>Hapus</button>
+                                        <button type="button" class="btn btn-outline-danger"><i class="fa fa-times"></i>Hapus</button>
                                     </td>
                                 </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -70,19 +74,14 @@
                                 <a href="#">Continue Shopping</a>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="continue__btn update__btn">
-                                <a href="#"><i class="fa fa-spinner"></i> Update cart</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="cart__total">
                         <h6>Cart total</h6>
                         <ul>
-                            <li>Subtotal <span>$ 169.50</span></li>
-                            <li>Total <span>$ 169.50</span></li>
+                            <li>Subtotal <span>{{ $subtotal}}</span></li>
+                            <li>Total <span>{{ $subtotal}}</span></li>
                         </ul>
                         <a href="#" class="primary-btn">Proceed to checkout</a>
                     </div>

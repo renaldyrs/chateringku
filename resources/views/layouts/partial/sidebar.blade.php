@@ -6,13 +6,13 @@
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="#">
+                    <a href="/adminhome">
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="admin_produk.php">
+                    <a href="/admin_produk">
                     <i class='fas fa-boxes'></i>  
                         Menu / Produk
                     </a>
@@ -35,7 +35,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="admin_pegawai.php">
+                    <a href="/admin_pegawai">
                     <i class="fas fa-users"></i>
                         Pegawai
                     </a>

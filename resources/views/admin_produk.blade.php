@@ -24,7 +24,8 @@
         </div>
         
         <!-- modal add_produk begin -->
-        <form action="">
+        <form action="/admin_produk/tambah" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
         <div class="modal fade" id="add_pegawai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -37,11 +38,11 @@
                 <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-3">Foto Profil</div>
+                            <div class="col-3">Foto Makanan</div>
                                 <div class="col-md-9">
                                     <div class="form-group">
                                         <label for="foto">Masukkan Foto</label>
-                                        <input type="file" class="form-control-file" id="foto">
+                                        <input type="file" name="file" class="form-control-file" id="foto">
                                     </div>
                                 </div>
                         </div>
@@ -49,14 +50,28 @@
                         <div class="row">
                             <div class="col-3">Nama Menu</div>
                                 <div class="col-md-9">
-                                    <input type="text" class="form-control" placeholder="Email">
+                                    <input type="text" class="form-control" placeholder="Nama" name="nama">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-3">Harga</div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Harga" name="harga">
+                                </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-3">kategori</div>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control" placeholder="Kategori" name="kategori">
                                 </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-3">Deskripsi</div>
                             <div class="col-md-9">
-                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                                <textarea class="form-control" rows="5" id="comment" name="deskripsi"></textarea>
                             </div>
                         </div>
                         <br>
@@ -66,75 +81,14 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>  Batal</button>
-                    <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                    <button  class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
                 </div>
             </div>
             </div>
         </div>
         </form>
         <!-- modal add_pegawai end -->
-        <!-- modal ubah begin -->
-        <form action="">
-        <div class="modal fade" id="ubah_pegawai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit"></i>  Edit Data Karyawan</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-3">Nama Lengkap</div>
-                            <div class="col-md-9">
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" class="form-control" placeholder="Nama Depan">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-3">Email</div>
-                            <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-3">Alamat</div>
-                            <div class="col-md-9">
-                                <textarea class="form-control" rows="5" id="comment"></textarea>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-3">Foto Profil</div>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <label for="foto">Masukkan Foto</label>
-                                    <input type="file" class="form-control-file" id="foto">
-                                </div>
-                            </div>
-                        </div>
-                    
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>  Batal</button>
-                    <button type="button" class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
-                </div>
-            </div>
-            </div>
-        </div>
-        </form>
-        <!-- modal ubah end -->
+        
         <br><br>
         <!-- tabel begin -->
         <div class="container-fluid">
@@ -152,16 +106,86 @@
                     </tr>
                 </thead>
                 <tbody>
+                @if($produk)
+                @foreach($produk as $p)
                     <tr>
                     <th scope="row">1</th>
-                        <td>Rawon</td>
-                        <td>Rp 7.000</td>
-                        <td></td>
-                        <td>makanan berat</td>
+                        <td>{{$p->nama_produk}}</td>
+                        <td>{{$p->harga}}</td>
+                        <td> <img  src="{{ url('/data_file/produk/'.$p['file']) }}" alt="Card image cap" height="100" ></td>
+                        <td>{{$p->kategori}}</td>
                         <td><center><button type="button" class="btn btn-info" data-toggle="modal" data-target="#ubah_pegawai"><i class='fas fa-pencil-alt'></i>  Ubah</button>
-                            <button type="button" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</button>
+                            <a href="/admin_produk/hapus/{{$p->id_produk}}" class="btn btn-warning"><i class="fas fa-times"></i> Hapus</a>
                         </center></td>
                     </tr>
+                <!-- modal ubah begin -->
+                    <form action="/admin_produk/edit"method="POST" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                    <div class="modal fade" id="ubah_pegawai" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-user-edit"></i>  Edit Data Karyawan</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <input type="text" name="id" value="{{$p->id_produk}}" hidden>
+                            <div class="modal-body">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-3">Foto Makanan</div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label for="foto">Masukkan Foto</label>
+                                                    <input type="file" name="file" class="form-control-file" id="foto">
+                                                </div>
+                                            </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">Nama Menu</div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Nama" name="nama" value="{{$p->nama_produk}}">
+                                            </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">Harga</div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Harga" value="{{$p->harga}}" name="harga">
+                                            </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">kategori</div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Kategori" name="kategori" value="{{$p->kategori}}">
+                                            </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-3">Deskripsi</div>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" rows="5" id="comment" name="deskripsi">{{$p->deskripsi}} </textarea>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    
+                                
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i>  Batal</button>
+                                <button  class="btn btn-primary"><i class="fas fa-save"></i> Simpan</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </form>
+                    <!-- modal ubah end -->
+                @endforeach
+                @endif
                 </tbody>
             </table>
         </div>

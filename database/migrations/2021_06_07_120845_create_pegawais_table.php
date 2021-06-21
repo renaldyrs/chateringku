@@ -17,8 +17,9 @@ class CreatePegawaisTable extends Migration
             $table->increments('id_pegawai');
             $table->string('nama_pegawai');
             $table->string('alamat');
+            $table->string('foto');
             $table->string('no_hp');
-            $table->string('bagian');
+            $table->string('bagian')->nullable();
         });
     }
 
