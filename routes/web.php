@@ -59,3 +59,9 @@ Route::get('/checkout', function () {
 Route::get('/pembayaran', function () {
     return view('pembayaran');
 });
+Route::get('/pesanan', function () {
+    return view('pesanan');
+});
+Route::get('/admin-diproses', function () {
+    return view('admin-diproses');
+});
