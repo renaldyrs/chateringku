@@ -16,10 +16,12 @@ class CreatePembayaransTable extends Migration
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->increments('id_pembayaran');
             $table->integer('id_pesanan')->unsigned();
+            $table->integer('id_bank')->unsigned();
             $table->date('tanggal_pembayaran');
             $table->string('file_pembayaran');
             $table->string('status');
             $table->foreign('id_pesanan')->references('id_pesanan')->on('pesanans')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('id_bank')->references('id_bank')->on('banks')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

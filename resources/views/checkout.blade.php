@@ -28,56 +28,32 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form action="#">
+                <form action="/bayar" method="get">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <h6 class="checkout__title">Informasi Pengiriman</h6>
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-12">
                                     <div class="checkout__input">
-                                        <p>Nama Depan<span>*</span></p>
-                                        <input type="text">
+                                        <p>Nama Lengkap<span>*</span></p>
+                                        <input name="nama" type="text">
                                     </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <div class="checkout__input">
-                                        <p>Nama Belakang<span>*</span></p>
-                                        <input type="text">
-                                    </div>
-                                </div>
+                                
                             </div>
                             <div class="checkout__input">
                                 <p>No. Handphone (contoh : 0822xx)<span>*</span></p>
-                                <input type="text">
+                                <input name="hp" type="text">
                             </div>
                             <div class="checkout__input">
                                 <p>Alamat Lengkap<span>*</span></p>
-                                <textarea class="form-control" id="txtAlamat" rows="3" placeholder="Alamat Lengkap"></textarea>
+                                <textarea name="alamat" class="form-control" id="txtAlamat" rows="3" placeholder="Alamat Lengkap"></textarea>
                                 <br>
                             </div>
-                            <div class="checkout__input">
-                                <p>Surabaya Bagian<span>*</span></p>
-                                <select class="form-control form-control-lg">
-                                    <option>Utara</option>
-                                    <option>Timur</option>
-                                    <option>Barat</option>
-                                    <option>Selatan</option>
-                                  </select>
-                                  <br><br>
-                            </div>
-                            <div class="checkout__input">
-                                <p>Kecamatan<span>*</span></p>
-                                <select class="form-control form-control-lg">
-                                    <option>Utara</option>
-                                    <option>Timur</option>
-                                    <option>Barat</option>
-                                    <option>Selatan</option>
-                                  </select>
-                                  <br><br>
-                            </div>
+                           
                             <div class="checkout__input">
                                 <p>Kode Pos<span>*</span></p>
-                                <input type="text">
+                                <input name="kodepos" type="text">
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-6">
@@ -85,20 +61,19 @@
                                 <h6 class="order__title">Pembayaran</h6>
                                 <div class="checkout__order__products">Pilih Metode Pembayaran</div>
                                 <ul class="checkout__total__products">
+                                @if($bank)
+                                    @foreach($bank as $b)
                                     <li>
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">BCA
+                                        <input class="form-check-input" name="bank" type="radio" name="exampleRadios" id="exampleRadios1" value="{{$b['id_bank']}}" checked>
+                                        <label class="form-check-label" for="exampleRadios1">{{$b['nama_bank']}}</label>
                                     </li>
-                                    <li><input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">BRI</li>
-                                    <li>
-                                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-                                        <label class="form-check-label" for="exampleRadios1">BNI
-                                    </li>
+
+                                    @endforeach
+                                @endif
                                 </ul>
                                 <ul class="checkout__total__all">
-                                    <li>Subtotal <span>$750.99</span></li>
-                                    <li>Total <span>$750.99</span></li>
+                                    <li>Subtotal <span>{{$subtotal}}</span></li>
+                                    <li>Total <span>{{$subtotal}}</span></li>
                                 </ul>
                                 <button type="submit" class="site-btn">PLACE ORDER</button>
                             </div>

@@ -24,6 +24,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // pelanggan
 Route::post('/add-to-cart', 'App\HTTP\Controllers\PelangganController@add')->name('add')->middleware(['auth']);
 Route::get('/keranjang', 'App\HTTP\Controllers\PelangganController@keranjang')->name('keranjang')->middleware(['auth']);
+Route::get('/keranjang/delete/{id}', 'App\HTTP\Controllers\PelangganController@delete')->name('delete')->middleware(['auth']);
+Route::get('/keranjang/change/{id}/{nilai}', 'App\HTTP\Controllers\PelangganController@change')->name('change')->middleware(['auth']);
+Route::get('/checkout', 'App\HTTP\Controllers\PelangganController@checkout')->name('checkout')->middleware(['auth']);
+Route::get('/bayar', 'App\HTTP\Controllers\PelangganController@bayar')->name('checkout')->middleware(['auth']);
 
 
 // admin
@@ -53,9 +57,7 @@ Route::get('/pengadaan_supplier/hapus/{id}', 'App\HTTP\Controllers\PengadaanCont
 Route::get('/produk-detail', function () {
     return view('produk-detail');
 });
-Route::get('/checkout', function () {
-    return view('checkout');
-});
+
 Route::get('/pembayaran', function () {
     return view('pembayaran');
 });

@@ -16,11 +16,13 @@ class CreatePesanansTable extends Migration
         Schema::create('pesanans', function (Blueprint $table) {
             $table->increments('id_pesanan');
             $table->integer('id_pelanggan')->unsigned();
-            $table->integer('id_pegawai')->unsigned();
+            $table->string('alamat');
+            $table->string('kode_pos');
             $table->date('tanggal_pesanan');
+            $table->date('tanggal_pengiriman')->nullable();
             $table->string('status');
             $table->foreign('id_pelanggan')->references('id_pelanggan')->on('pelanggans')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onUpdate('cascade')->onDelete('restrict');
+            
         });
     }
 
