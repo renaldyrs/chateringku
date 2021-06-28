@@ -28,6 +28,9 @@ Route::get('/keranjang/delete/{id}', 'App\HTTP\Controllers\PelangganController@d
 Route::get('/keranjang/change/{id}/{nilai}', 'App\HTTP\Controllers\PelangganController@change')->name('change')->middleware(['auth']);
 Route::get('/checkout', 'App\HTTP\Controllers\PelangganController@checkout')->name('checkout')->middleware(['auth']);
 Route::get('/bayar', 'App\HTTP\Controllers\PelangganController@bayar')->name('checkout')->middleware(['auth']);
+Route::get('/pembayaran', 'App\HTTP\Controllers\PelangganController@pembayaran')->name('pembayaran')->middleware(['auth']);
+Route::post('/pembayaran/upload', 'App\HTTP\Controllers\PelangganController@upload')->name('upload')->middleware(['auth']);
+Route::get('/pesanan', 'App\HTTP\Controllers\PelangganController@pesanan')->name('pesanan')->middleware(['auth']);
 
 
 // admin
@@ -57,13 +60,11 @@ Route::get('/pengadaan_supplier/hapus/{id}', 'App\HTTP\Controllers\PengadaanCont
 Route::get('/produk-detail', function () {
     return view('produk-detail');
 });
-
-Route::get('/pembayaran', function () {
-    return view('pembayaran');
-});
 Route::get('/pesanan', function () {
     return view('pesanan');
 });
+
+
 Route::get('/admin-diproses', function () {
     return view('admin-diproses');
 });

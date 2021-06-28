@@ -5,58 +5,7 @@
 
 
 <!-- rincian modal -->
-<div class="modal fade bd-example-modal-lg" id="lihat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="terima">Rincian Produk</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <table class="table table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                    <th scope="col">No.</th>
-                    <th scope="col">Gambar Menu</th>
-                    <th scope="col">Nama Menu</th>
-                    <th scope="col">Harga</th>
-                    <th scope="col">Deskripsi</th>
-                    <th scope="col">Kategori</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">2</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">3</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Otto</td>
-                    <td>Mark</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-  </div>
-</div>
+
 <!-- rincian modal -->
 <!-- rincian bayar -->
 <div class="modal fade" id="bayar" tabindex="-1" role="dialog" aria-labelledby="bayar" aria-hidden="true">
@@ -128,8 +77,6 @@
                             <thead class="thead-dark">
                                 <tr>
                                 <th scope="col">No.</th>
-                                <th scope="col">Gambar Produk</th>
-                                <th scope="col">Nama Produk</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Tanggal Pesan</th>
                                 <th scope="col">Tanggal Kirim</th>
@@ -141,8 +88,6 @@
                             <tbody>
                                 <tr>
                                 <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
                                 <td>Adda</td>
                                 <td>Undo</td>
                                 <td>Redo</td>
@@ -151,6 +96,45 @@
                                     <button type="button" class="btn btn-info" data-toggle="modal" data-target="#lihat">
                                         Rincian Menu
                                     </button>
+
+                                    <div class="modal fade bd-example-modal-lg" id="lihat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="terima">Rincian Produk</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-hover">
+                                                        <thead class="thead-dark">
+                                                            <tr>
+                                                            <th scope="col">No.</th>
+                                                            <th scope="col">Gambar Menu</th>
+                                                            <th scope="col">Nama Menu</th>
+                                                            <th scope="col">Harga</th>
+                                                            <th scope="col">Deskripsi</th>
+                                                            <th scope="col">Kategori</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                            <th scope="row">1</th>
+                                                            <td>Mark</td>
+                                                            <td>Otto</td>
+                                                            <td>@mdo</td>
+                                                            <td>Otto</td>
+                                                            <td>Mark</td>
+                                                            </tr>
+                                                            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+
                                 </td>
                                 <td>
                                     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#bayar">
@@ -162,52 +146,7 @@
                                     </button>
                                 </td>
                                 </tr>
-                                <tr>
-                                <th scope="row">2</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Adda</td>
-                                <td>Undo</td>
-                                <td>Redo</td>
-                                <td>kanashi</td>
-                                <td>
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#lihat">
-                                        Rincian Menu
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#bayar">
-                                        Bayar Pesanan
-                                    </button>
-                                    <br><br>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#batal">
-                                        Batalkan Pesanan
-                                    </button>
-                                </td>
-                                </tr>
-                                <tr>
-                                <th scope="row">3</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>Adda</td>
-                                <td>Undo</td>
-                                <td>Redo</td>
-                                <td>kanashi</td>
-                                <td>
-                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#lihat">
-                                        Rincian Menu
-                                    </button>
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#bayar">
-                                        Bayar Pesanan
-                                    </button>
-                                    <br><br>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#batal">
-                                        Batalkan Pesanan
-                                    </button>
-                                </td>
-                                </tr>
+                                
                             </tbody>
                         </table>
                     </div>

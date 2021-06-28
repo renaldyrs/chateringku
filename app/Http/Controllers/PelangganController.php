@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\bank;
 use App\Models\Pelanggan;
+use App\Models\pembayaran;
 use App\Models\Pesanan;
 use App\Models\pesanan_item;
 use App\Models\produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
+use DB;
+use File;
 
 class PelangganController extends Controller
 {
@@ -158,7 +161,7 @@ class PelangganController extends Controller
             foreach($pela as $a){
                 $id = $a->id_pelanggan;
             }
-            echo "c";
+            // echo "c";
             Pelanggan::where('id_pelanggan',$id)->update(
                     ['nama_pelanggan'=>$request->nama,
                     'kode_pos'=>$request->kodepos,
@@ -179,37 +182,109 @@ class PelangganController extends Controller
 
         }
         $pela = Pelanggan::where('id_user',Auth::user()->id)->select('id_pelanggan')->get();
-        // dd($pela);
-        // echo date('Y-m-d');
-        $id=0;
-        foreach($pela as $a){
-            $id = $a->id_pelanggan;
-        }
-        echo "c";
-        $cartItems = json_decode($request->cookie('dw-carts'), true);
-        Pesanan::insert([
-            'id_pelanggan'=>$id,
-            'kode_pos'=>$request->kodepos,
-            'alamat'=>$request->alamat,
-            'tanggal_pesanan'=>date('Y-m-d H:i:s'),
-            'status'=>'belum bayar',
-        ]);
-        $pesan = Pesanan::where('id_pelanggan',$id)->select('id_pesanan')->get();
+            // dd($pela);
+            // echo date('Y-m-d');
+            $id=0;
+            foreach($pela as $a){
+                $id = $a->id_pelanggan;
+            }
+            // echo "c";
+        $pesan = Pesanan::where('id_pelanggan',$id)->select('id_pesanan')->orderBy('id_pesanan', 'desc')->Limit(1)->get();
         $id_pesan=0;
-        foreach($pesan as $a){
-            $id_pesan= $a->id_pesanan;
-        }
-        foreach($cartItems as $a){
-            pesanan_item::insert([
-                'id_produk'=>$a['product_id'],
-                'id_pesanan'=>$id_pesan,
-                'jumlah'=>$a['qty'],
-                'harga'=>$a['product_price']
-            ]);
-        }
-        $cookie = \Cookie::forget('dw-carts');
-        Cookie::queue($cookie);
+            foreach($pesan as $a){
+                $id_pesan= $a->id_pesanan;
+            }
+        $bank = bank::where('id_bank',$request->bank)->get();
+        
+        //  dd($pesan);
+        if(count($pesan)>0){
             
-        return redirect('/pembayaran'); 
+            return view('pembayaran',compact('id_pesan','bank'));
+        }else{
+            $cartItems = json_decode($request->cookie('dw-carts'), true);
+            Pesanan::insert([
+                'id_pelanggan'=>$id,
+                'kode_pos'=>$request->kodepos,
+                'alamat'=>$request->alamat,
+                'tanggal_pesanan'=>date('Y-m-d H:i:s'),
+                'status'=>'belum bayar',
+            ]);
+            
+            $pesan = Pesanan::where('id_pelanggan',$id)->select('id_pesanan')->orderBy('id_pesanan', 'desc')->Limit(1)->get();
+            // $id_pesan=0;
+            foreach($pesan as $a){
+                $id_pesan= $a->id_pesanan;
+            }
+            foreach($cartItems as $a){
+                pesanan_item::insert([
+                    'id_produk'=>$a['product_id'],
+                    'id_pesanan'=>$id_pesan,
+                    'jumlah'=>$a['qty'],
+                    'harga'=>$a['product_price']
+                ]);
+            }
+    
+    
+            pembayaran::insert([
+                'id_pesanan'=>$id_pesan,
+                'id_bank'=>$request->bank,
+                'status'=>'belum bayar'
+            ]);
+    
+            $cookie = \Cookie::forget('dw-carts');
+            Cookie::queue($cookie);
+            return view('pembayaran',compact('id_pesan','bank'));
+        }
     }
+    public function pembayaran(Request $request){
+        $bank = bank::where('id_bank',$request->bank)->get();
+        $id_pesan = $request->id_pesanan;
+        return view('pembayaran',compact('id_pesan','bank'));
+    }
+
+
+    public function upload(Request $request){
+        // dd("a");
+        $cek = DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->get();
+		$f ="";
+		foreach($cek as $c){
+			$f = $c->file_pembayaran;
+		}
+        $file = $request->file('bukti');
+		if(is_null($file)){
+            echo"a";
+			// return  redirect('/pesanan');
+		}else{
+
+		// dd("a");
+		// return $file;
+		$nama_file = time()."_".$file->getClientOriginalName();
+		if(is_null($f)){
+			// dd("a");
+			$tujuan_upload = 'data_file/bayar';
+			$file->move($tujuan_upload,$nama_file);
+			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
+				'tanggal_pembayaran'=>date('Y-m-d'),
+				'file_pembayaran'=>$nama_file
+			]);
+			
+		}else{
+			$tujuan_upload = 'data_file/bayar';
+			
+			File::delete('data_file/bayar/'.$f);
+			// dd($f);
+            $file->move($tujuan_upload,$nama_file);
+			DB::table('pembayarans')->where('id_pesanan',$request->id_pesanan)->update([
+				'tanggal_pembayaran'=>date('Y-m-d'),
+				'file_pembayaran'=>$nama_file
+			]);
+			
+		}
+		return  redirect('/');
+		}
+    }
+    public function pesanan(){
+        
+    }
+    
 }

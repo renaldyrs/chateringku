@@ -16,9 +16,10 @@
                 </div>
                 <div class="card-block">
                   <br>
-                  
-                  <h3 class="card-text"></h3>
-                  
+                  @foreach($bank as $b)
+                  <h3 class="card-text">{{$b->nama_bank}}</h3>
+                  <h3 class="card-text">{{$b->no_rekening}}</h3>
+                  @endforeach
                   <br><br>
                 </div>
                 <div class="card-body">
@@ -26,9 +27,9 @@
                 </div>
               </div>
               <br>
-                <form method="post"  action="/bayar/upload" enctype="multipart/form-data">
+                <form method="post"  action="/pembayaran/upload" enctype="multipart/form-data">
                 @csrf
-                  <input type="hidden"  name="id_pesanan" value="">
+                  <input type="hidden"  name="id_pesanan" value="{{$id_pesan}}">
                   <div class="form-group">
                   
                     <label for="exampleFormControlFile1">Bukti Pembayaran</label>
