@@ -1,49 +1,40 @@
 <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Admin Owner</h3>
-                <strong>AO</strong>
+                <h3>Admin Pengadaan</h3>
+                <strong>AP</strong>
             </div>
 
             <ul class="list-unstyled components">
                 <li class="active">
-                    <a href="/adminhome">
+                    <a href="#">
                         <i class="fas fa-tachometer-alt"></i>
                         Dashboard
                     </a>
                 </li>
                 <li>
-                    <a href="/admin_produk">
-                    <i class='fas fa-boxes'></i>  
-                        Menu / Produk
-                    </a>
-                </li>
-                <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-inbox"></i>
-                        Pesanan
+                        Pesanan Bahan Baku
                     </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Pesanan Masuk</a>
-                        </li>
-                        <li>
-                            <a href="#">Pesanan Diproses</a>
-                        </li>
-                        <li>
                             <a href="#">Pesanan Diterima</a>
+                        </li>
+                        <li>
+                            <a href="#">Daftar Pesanan Bahan Baku</a>
+                        </li>
+                        <li>
+                            <a href="#">Daftar Bahan Baku Diterima</a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/admin_pegawai">
-                    <i class="fas fa-users"></i>
-                        Pegawai
+                    <a href="/pengadaan_supplier">
+                        <i class='fas fa-industry'></i>
+                        Supplier
                     </a>
+                </li>
                 <li>
-                    <a href="#">
-                        <i class="fas fa-hand-holding-usd"></i>
-                        Keuangan
-                    </a>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-book"></i>
                         Laporan
